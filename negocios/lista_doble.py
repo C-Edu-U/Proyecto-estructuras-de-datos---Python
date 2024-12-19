@@ -1,4 +1,5 @@
 import time
+import random
 
 class NodoDoble:
     def __init__(self, dato):
@@ -85,21 +86,34 @@ class ListaDoble:
             actual = actual.siguiente
             if actual == self.puntero:
                 break
-        return " <-> ".join(resultado)
+        return " ".join(resultado)
 
-    def sortear(self, vueltas, delay):
-        """Realiza un sorteo simulando una ruleta.
+    def sortear(self, vueltas_base, delay):
+        """Realiza un sorteo simulando una ruleta con un ganador aleatorio.
         
-        Args:
-            vueltas (int): Número de movimientos en la ruleta.
+        Argumentos:
+            vueltas_base (int): Número base de vueltas completas.
             delay (float): Tiempo en segundos entre cada movimiento.
         """
         if self.puntero is None:
             return "Lista vacía. No se puede sortear."
+
+        # Número total de movimientos aleatorios (entre vueltas_base y vueltas_base + n)
+        total_movimientos = vueltas_base + random.randint(0, self.longitud() - 1)
         
-        for _ in range(vueltas):
+        for _ in range(total_movimientos):
             self.mover_derecha()
             print(self.mostrar())  # Simula visualización en consola
             time.sleep(delay)
         
         return f"Ganador: {self.obtener_puntero()}"
+
+    def longitud(self): #Calcula el número de nodos en la lista
+        if self.puntero is None:
+            return 0
+        actual = self.puntero
+        contador = 1
+        while actual.siguiente != self.puntero:
+            actual = actual.siguiente
+            contador += 1
+        return contador
