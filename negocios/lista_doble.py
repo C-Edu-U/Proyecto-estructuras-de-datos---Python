@@ -1,3 +1,5 @@
+import time
+
 class NodoDoble:
     def __init__(self, dato):
         self.dato = dato
@@ -84,3 +86,20 @@ class ListaDoble:
             if actual == self.puntero:
                 break
         return " <-> ".join(resultado)
+
+    def sortear(self, vueltas, delay):
+        """Realiza un sorteo simulando una ruleta.
+        
+        Args:
+            vueltas (int): Número de movimientos en la ruleta.
+            delay (float): Tiempo en segundos entre cada movimiento.
+        """
+        if self.puntero is None:
+            return "Lista vacía. No se puede sortear."
+        
+        for _ in range(vueltas):
+            self.mover_derecha()
+            print(self.mostrar())  # Simula visualización en consola
+            time.sleep(delay)
+        
+        return f"Ganador: {self.obtener_puntero()}"

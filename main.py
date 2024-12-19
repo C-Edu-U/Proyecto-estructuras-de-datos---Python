@@ -3,6 +3,7 @@ from presentacion.gui_pila import PilaGUI
 from presentacion.gui_cola import ColaGUI
 from presentacion.gui_lista import ListaGUI
 from presentacion.gui_lista_doble import ListaDobleGUI
+from presentacion.gui_ruleta import RuletaGUI
 
 
 def main_menu(root):
@@ -13,6 +14,7 @@ def main_menu(root):
     tk.Button(root, text="Operar con Cola", command=lambda: ColaGUI(root), width=20).pack(pady=10)
     tk.Button(root, text="Operar con Lista", command=lambda: ListaGUI(root), width=20).pack(pady=10)
     tk.Button(root, text="Operar con Lista Doble", command=lambda: ListaDobleGUI(root), width=20).pack(pady=10)
+    tk.Button(root, text="Ruleta (Lista Doble)", command=lambda: RuletaGUI(root), width=20).pack(pady=10)
     tk.Button(root, text="Salir", command=root.quit, width=20).pack(pady=10)
 
 
